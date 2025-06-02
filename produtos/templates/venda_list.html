@@ -1,0 +1,15 @@
+<h1>Vendas</h1>
+<a href="{% url 'cria_venda' %}">Nova Venda</a>
+
+<form method="get">
+  Cliente ID: <input type="text" name="cliente">
+  De: <input type="date" name="data_inicio">
+  Até: <input type="date" name="data_fim">
+  <button type="submit">Filtrar</button>
+</form>
+
+<ul>
+  {% for venda in vendas %}
+    <li>{{ venda.cliente.nome }} comprou {{ venda.quantidade }}x {{ venda.produto.nome }} em {{ venda.data_venda }} – Total: R$ {{ venda.valor_total }}</li>
+  {% endfor %}
+</ul>
